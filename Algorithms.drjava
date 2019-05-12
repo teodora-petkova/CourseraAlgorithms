@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" build="build/" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="W3.Collinear-Points/FastCollinearPoints.java" package="" timestamp="02-Jan-2018 10:29:56">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W3.Collinear-Points/Point.java" package="" timestamp="31-Dec-2017 20:30:46">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W3.Collinear-Points/BruteCollinearPoints.java" package="" timestamp="01-Jan-2018 21:23:12">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W2.Stacks-and-Queues/UnitTests/DequeTest.java" package="" timestamp="06-Nov-2017 10:50:50">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W2.Stacks-and-Queues/RandomizedQueue.java" package="" timestamp="07-Nov-2017 09:22:43">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W1.Union-Find/PercolationStats.java" package="" timestamp="31-May-2017 22:43:50">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W1.Union-Find/Percolation.java" package="" timestamp="16-Jun-2017 19:24:49">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W1.Union-Find/PercolationTests/PercolationVisualizer.java" package="" timestamp="12-May-2019 14:44:02">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W1.Union-Find/PercolationTests/InteractivePercolationVisualizer.java" package="" timestamp="15-Jul-2016 06:32:04">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W2.Stacks-and-Queues/Permutation.java" package="" timestamp="04-Nov-2017 22:03:56">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W2.Stacks-and-Queues/Deque.java" package="" timestamp="04-Nov-2017 05:46:41">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W2.Stacks-and-Queues/UnitTests/RandomizedQueueTest.java" package="" timestamp="12-May-2019 15:14:45">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W3.Collinear-Points/UnitTests/PointTest.java" package="" timestamp="30-Dec-2017 18:48:50">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W3.Collinear-Points/UnitTests/BruteCollinearPointsTest.java" package="" timestamp="29-Dec-2017 14:02:50">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W3.Collinear-Points/LineSegment.java" package="" timestamp="14-Feb-2016 03:12:27">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="W3.Collinear-Points/UnitTests/FastCollinearPointsTest.java" package="" timestamp="12-May-2019 15:36:47">
+        <select from="144" to="144"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed>
+      <path name="./[ Source Files ]/W1.Union-Find/PercolationTests/"/>
+      <path name="./[ Source Files ]/W1.Union-Find/"/>
+      <path name="./[ Source Files ]/W2.Stacks-and-Queues/UnitTests/"/>
+      <path name="./[ Source Files ]/W2.Stacks-and-Queues/"/>
+      <path name="./[ Source Files ]/W3.Collinear-Points/UnitTests/"/>
+      <path name="./[ Source Files ]/W3.Collinear-Points/"/>
+    </collapsed>
+    <classpath>
+      <file absolute="false" name="libs/algs4.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
