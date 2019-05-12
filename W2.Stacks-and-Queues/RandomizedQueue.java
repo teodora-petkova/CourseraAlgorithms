@@ -109,7 +109,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         queue.enqueue(5);
         queue.enqueue(6);        
         
-        int i = 6;
         for (int d1 : queue) {
             for (int d2 : queue) {
                 System.out.println(d1 + "    " + d2); 
