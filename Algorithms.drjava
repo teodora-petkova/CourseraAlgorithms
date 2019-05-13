@@ -3,113 +3,133 @@
   <project autorefresh="false" build="build/" root="" work="">
     <createjar file=""/>
     <source>
-      <file active="true" name="W5.KdTree/KdTree.java" package="" timestamp="02-Dec-2018 22:11:08">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+      <file active="true" name="W6.WordNet/UnitTests/SAPTest.java" package="" timestamp="13-May-2019 01:07:45">
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
+      </file>
+      <file name="W5.KdTree/KdTree.java" package="" timestamp="02-Dec-2018 22:11:08">
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W5.KdTree/KdTreeTests/KdTreeVisualizer.java" package="" timestamp="09-Oct-2017 17:00:45">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W3.Collinear-Points/FastCollinearPoints.java" package="" timestamp="02-Jan-2018 10:29:56">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W3.Collinear-Points/Point.java" package="" timestamp="31-Dec-2017 20:30:46">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W3.Collinear-Points/BruteCollinearPoints.java" package="" timestamp="01-Jan-2018 21:23:12">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W2.Stacks-and-Queues/UnitTests/DequeTest.java" package="" timestamp="06-Nov-2017 10:50:50">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W1.Union-Find/PercolationStats.java" package="" timestamp="31-May-2017 22:43:50">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
-      </file>
-      <file name="W1.Union-Find/Percolation.java" package="" timestamp="12-May-2019 16:05:40">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W1.Union-Find/PercolationTests/PercolationVisualizer.java" package="" timestamp="12-May-2019 14:44:02">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W2.Stacks-and-Queues/Permutation.java" package="" timestamp="04-Nov-2017 22:03:56">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W2.Stacks-and-Queues/Deque.java" package="" timestamp="04-Nov-2017 05:46:41">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W2.Stacks-and-Queues/UnitTests/RandomizedQueueTest.java" package="" timestamp="12-May-2019 15:14:45">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W3.Collinear-Points/UnitTests/PointTest.java" package="" timestamp="30-Dec-2017 18:48:50">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W3.Collinear-Points/UnitTests/BruteCollinearPointsTest.java" package="" timestamp="29-Dec-2017 14:02:50">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W3.Collinear-Points/LineSegment.java" package="" timestamp="14-Feb-2016 03:12:27">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W3.Collinear-Points/UnitTests/FastCollinearPointsTest.java" package="" timestamp="12-May-2019 15:36:47">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W4.Puzzle/Solver.java" package="" timestamp="11-Nov-2018 21:25:17">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W4.Puzzle/Board.java" package="" timestamp="11-Nov-2018 21:25:51">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W4.Puzzle/UnitTests/BoardTest.java" package="" timestamp="10-Nov-2018 22:14:55">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W4.Puzzle/UnitTests/SolverTest.java" package="" timestamp="12-May-2019 16:30:21">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W5.KdTree/PointSET.java" package="" timestamp="02-Dec-2018 18:32:47">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W5.KdTree/KdTreeTests/RangeSearchVisualizer.java" package="" timestamp="14-Mar-2019 13:34:27">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W5.KdTree/KdTreeTests/NearestNeighborVisualizer.java" package="" timestamp="09-Oct-2017 16:58:18">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W5.KdTree/KdTreeTests/KdTreeGenerator.java" package="" timestamp="15-Jul-2016 06:36:56">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W5.KdTree/UnitTests/KdTreeTest.java" package="" timestamp="02-Dec-2018 20:59:11">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W1.Union-Find/PercolationTests/InteractivePercolationVisualizer.java" package="" timestamp="12-May-2019 16:54:15">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
       <file name="W2.Stacks-and-Queues/RandomizedQueue.java" package="" timestamp="12-May-2019 16:54:46">
-        <select from="8562" to="8562"/>
-        <scroll column="4091" row="0"/>
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
+      </file>
+      <file name="W6.WordNet/Outcast.java" package="" timestamp="12-May-2019 22:32:34">
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
+      </file>
+      <file name="W6.WordNet/WordNet.java" package="" timestamp="12-May-2019 22:35:08">
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
+      </file>
+      <file name="W6.WordNet/WordNetTests/Test.java" package="" timestamp="12-May-2019 23:47:42">
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
+      </file>
+      <file name="W1.Union-Find/Percolation.java" package="" timestamp="13-May-2019 00:50:10">
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
+      </file>
+      <file name="W6.WordNet/SAP.java" package="" timestamp="13-May-2019 01:10:52">
+        <select from="978" to="978"/>
+        <scroll column="215" row="0"/>
       </file>
     </source>
     <included/>
@@ -125,6 +145,10 @@
       <path name="./[ Source Files ]/W4.Puzzle/"/>
       <path name="./[ Source Files ]/W5.KdTree/KdTreeTests/"/>
       <path name="./[ Source Files ]/W5.KdTree/UnitTests/"/>
+      <path name="./[ Source Files ]/W5.KdTree/"/>
+      <path name="./[ Source Files ]/W6.WordNet/UnitTests/"/>
+      <path name="./[ Source Files ]/W6.WordNet/WordNetTests/"/>
+      <path name="./[ Source Files ]/W6.WordNet/"/>
     </collapsed>
     <classpath>
       <file absolute="false" name="libs/algs4.jar"/>
