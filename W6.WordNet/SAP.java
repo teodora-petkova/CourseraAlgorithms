@@ -1,99 +1,123 @@
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.Queue;
-//Shortest ancestral path.
+// import edu.princeton.cs.algs4.StdOut;
+// Shortest ancestral path.
 public class SAP {
     
-   private Digraph G;
-   private Integer[] distv;
-   private Integer[] distw;
-       
+   private final Digraph G;
+   
    // constructor takes a digraph (not necessarily a DAG)
    public SAP(Digraph G)
    {
        if (G == null)
-           throw new java.lang.NullPointerException();
-       this.G = G;         
-       this.distv = new Integer[G.V()];
-       this.distw = new Integer[G.V()];
-       for (int i = 0; i < G.V(); i++)
-       {
-           this.distv[i] = 0;
-           this.distw[i] = 0;
-       }        
+           throw new IllegalArgumentException();
+       this.G = new Digraph(G);      
    }
 
-   private int getCommonAncestor(int v, int w)
-   {   
-       boolean[] markedv = new boolean[G.V()];
-       boolean[] markedw = new boolean[G.V()];
-
-       Queue<Integer> qv = new Queue<Integer>();
-       Queue<Integer> qw = new Queue<Integer>();
-       qv.enqueue(v);
-       qw.enqueue(w);
-       distv[v] = 0;
-       distw[w] = 0;
-       int bestAncestralLength = Integer.MAX_VALUE;
-       int ancestor = -1;
-       int currentv = v;
-       int currentw = w;
-       while ((!qv.isEmpty() || !qw.isEmpty())
-                  && (bestAncestralLength > distv[currentv] 
-                          && bestAncestralLength > distw[currentw]))
+   /* private void print(Integer[] arr)
+   {
+       for (int i = 0; i < arr.length; i++)
        {
-           if (!qv.isEmpty() && bestAncestralLength > distv[currentv])
+           StdOut.print(arr[i] + ", ");
+       }   
+       StdOut.println();
+   } */
+   
+   private class CommonAncestor
+   {
+       int vertex;
+       int length;
+       
+       public CommonAncestor(int v, int len)
+       {
+           this.vertex = v;
+           this.length = len;
+       }
+   };
+   
+   private void bfsOneStep(CommonAncestor commonAncestor, int currentVertex, 
+                           Queue<Integer> q, Integer[] dist, boolean[] marked, 
+                           int distFromOtherVertex, boolean markedInOtherBFS)
+   {
+       marked[currentVertex] = true;
+       int currentDistance = distFromOtherVertex + dist[currentVertex];
+       if (markedInOtherBFS && currentDistance < commonAncestor.length)
+       {
+           commonAncestor.length = currentDistance;
+           commonAncestor.vertex = currentVertex;
+       }
+            
+       for (int adjacent : G.adj(currentVertex))
+       {
+           if (!marked[adjacent]) 
            {
-               currentv = qv.dequeue(); 
-               markedv[currentv] = true;
-               if (markedw[currentv])
-               {
-                   bestAncestralLength = distw[currentv] + distv[currentv];
-                   ancestor = currentv;
-               }
-               for (int adjacentv : G.adj(currentv))
-               {
-                   if (!markedv[adjacentv]) 
-                   {
-                       distv[adjacentv] = distv[currentv] + 1;
-                       qv.enqueue(adjacentv);
-                   }
-               }
-           }
-           
-           if (!qw.isEmpty() && bestAncestralLength > distw[currentw])
-           {
-               currentw = qw.dequeue(); 
-               markedw[currentw] = true;
-               if (markedv[currentw])
-               {
-                   bestAncestralLength = distw[currentw] + distv[currentw];
-                   ancestor = currentw;               
-               } 
-               
-               for (int adjacentw : G.adj(currentw))
-               {
-                   if (!markedw[adjacentw]) 
-                   {
-                       distw[adjacentw] = distw[currentw] + 1;
-                       qw.enqueue(adjacentw);
-                   }
-               }
+               dist[adjacent] = dist[currentVertex] + 1;
+               q.enqueue(adjacent);
            }
        }
+   }
+   
+   private void initialiseDistancesAndMarkedVertices(Integer[] distv, Integer[] distw,
+                                                     boolean[] markedv, boolean[] markedw, int size)
+   {
+       for (int i = 0; i < size; i++)
+       {
+           distv[i] = 0;
+           distw[i] = 0;
+           markedv[i] = false;
+           markedw[i] = false;
+       }  
+   }
+   
+   private CommonAncestor getCommonAncestor(int v, int w)
+   {   
+       int size = G.V();
+       boolean[] markedv = new boolean[size];
+       boolean[] markedw = new boolean[size];
+
+       Integer[] distv = new Integer[size];
+       Integer[] distw = new Integer[size];
        
-       return ancestor;       
+       initialiseDistancesAndMarkedVertices(distv, distw, markedv, markedw, size);
+       
+       int currentv = v;
+       int currentw = w;
+       
+       Queue<Integer> qv = new Queue<Integer>();
+       Queue<Integer> qw = new Queue<Integer>();
+       qv.enqueue(currentv);
+       qw.enqueue(currentw);       
+       
+       CommonAncestor commonAncestor = new CommonAncestor(-1, Integer.MAX_VALUE);
+       
+       while ((!qv.isEmpty() || !qw.isEmpty())
+                  && (commonAncestor.length >= distv[currentv] &&
+                      commonAncestor.length >= distw[currentw]))
+       {   
+           if (!qv.isEmpty())
+           {
+               currentv = qv.dequeue(); 
+               bfsOneStep(commonAncestor, currentv, qv, distv, markedv, distw[currentv], markedw[currentv]);
+           }
+           if (!qw.isEmpty())
+           {
+               currentw = qw.dequeue(); 
+               bfsOneStep(commonAncestor, currentw, qw,  distw, markedw, distv[currentw], markedv[currentw]);
+           }
+       }
+       return commonAncestor;
    }
    
    // length of shortest ancestral path between v and w; -1 if no such path
    public int length(int v, int w)
    {
       if (v < 0 || v > G.V() | w < 0 || w > G.V())
-           throw new java.lang.IndexOutOfBoundsException();
+           throw new IllegalArgumentException();
      
-      int r = getCommonAncestor(v, w);
-      if (r == -1)
+      CommonAncestor r = getCommonAncestor(v, w);
+      if (r.vertex == -1)
           return -1;
-      return distv[r] + distw[r]; 
+      return r.length; 
    }
 
    // a common ancestor of v and w that participates 
@@ -101,9 +125,10 @@ public class SAP {
    public int ancestor(int v, int w)
    {   
        if (v < 0 || v > G.V() | w < 0 || w > G.V())
-           throw new java.lang.IndexOutOfBoundsException();
+           throw new IllegalArgumentException();
     
-       return getCommonAncestor(v, w);
+       CommonAncestor ancestor = getCommonAncestor(v, w);
+       return ancestor.vertex;
    }
 
    // length of shortest ancestral path between any vertex in v and 
@@ -111,7 +136,7 @@ public class SAP {
    public int length(Iterable<Integer> v, Iterable<Integer> w)
    {
        if (v == null || w == null)
-           throw new java.lang.NullPointerException();
+           throw new IllegalArgumentException();
        return -1;
    }
 
@@ -120,7 +145,7 @@ public class SAP {
    public int ancestor(Iterable<Integer> v, Iterable<Integer> w)
    {
        if (v == null || w == null)
-           throw new java.lang.NullPointerException();
+           throw new IllegalArgumentException();
        return -1;
    }
 

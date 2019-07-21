@@ -6,23 +6,23 @@ Compilation:  PASSED
 API:          PASSED
 
 Spotbugs:     FAILED (2 warnings)
-PMD:          FAILED (7 warnings)
-Checkstyle:   PASSED
+PMD:          FAILED (11 warnings)
+Checkstyle:   FAILED (0 errors, 2 warnings)
 
-Correctness:  7/36 tests passed
+Correctness:  10/36 tests passed
 Memory:       4/4 tests passed
-Timing:       30/27 tests passed
+Timing:       29/27 tests passed
 
-Aggregate score: 53.89%
+Aggregate score: 58.15%
 [Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
- 343 May 12 22:00 Outcast.java
-4.0K May 12 22:00 SAP.java
- 889 May 12 22:00 WordNet.java
+ 343 Jul 21 17:13 Outcast.java
+4.8K Jul 21 17:13 SAP.java
+ 889 Jul 21 17:13 WordNet.java
 
 
 ********************************************************************************
@@ -30,13 +30,13 @@ The following files were submitted:
 ********************************************************************************
 
 
-% javac SAP.java
+% javac11 SAP.java
 *-----------------------------------------------------------
 
-% javac WordNet.java
+% javac11 WordNet.java
 *-----------------------------------------------------------
 
-% javac Outcast.java
+% javac11 Outcast.java
 *-----------------------------------------------------------
 
 
@@ -61,8 +61,8 @@ Outcast:
 
 % spotbugs *.class
 *-----------------------------------------------------------
-L D NS_NON_SHORT_CIRCUIT NS: Questionable use of a non-short-circuit logic operator ('&' or '|'). Did you mean to use '&&' or '||' instead?  At SAP.java:[line 89]
-L D NS_NON_SHORT_CIRCUIT NS: Questionable use of a non-short-circuit logic operator ('&' or '|'). Did you mean to use '&&' or '||' instead?  At SAP.java:[line 102]
+L D NS_NON_SHORT_CIRCUIT NS: Questionable use of a non-short-circuit logic operator ('&' or '|'). Did you mean to use '&&' or '||' instead?  At SAP.java:[line 114]
+L D NS_NON_SHORT_CIRCUIT NS: Questionable use of a non-short-circuit logic operator ('&' or '|'). Did you mean to use '&&' or '||' instead?  At SAP.java:[line 127]
 Warnings generated: 2
 
 
@@ -73,12 +73,16 @@ Warnings generated: 2
 *-----------------------------------------------------------
 Outcast.java:3: Avoid unused parameter variables, such as 'wordnet'. [UnusedFormalParameter]
 Outcast.java:13: The method body is empty. If this is your intent, document it with a comment. [UncommentedEmptyMethodBody]
-SAP.java:5: The private instance (or static) variable 'G' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-SAP.java:128: The method body is empty. If this is your intent, document it with a comment. [UncommentedEmptyMethodBody]
+SAP.java:13: Unnecessary use of fully qualified name 'java.lang.IllegalArgumentException' due to existing implicit import 'java.lang.*'. [UnnecessaryFullyQualifiedName]
+SAP.java:115: Unnecessary use of fully qualified name 'java.lang.IllegalArgumentException' due to existing implicit import 'java.lang.*'. [UnnecessaryFullyQualifiedName]
+SAP.java:128: Unnecessary use of fully qualified name 'java.lang.IllegalArgumentException' due to existing implicit import 'java.lang.*'. [UnnecessaryFullyQualifiedName]
+SAP.java:139: Unnecessary use of fully qualified name 'java.lang.IllegalArgumentException' due to existing implicit import 'java.lang.*'. [UnnecessaryFullyQualifiedName]
+SAP.java:148: Unnecessary use of fully qualified name 'java.lang.IllegalArgumentException' due to existing implicit import 'java.lang.*'. [UnnecessaryFullyQualifiedName]
+SAP.java:154: The method body is empty. If this is your intent, document it with a comment. [UncommentedEmptyMethodBody]
 WordNet.java:6: Avoid unused parameter variables, such as 'hypernyms'. [UnusedFormalParameter]
 WordNet.java:6: Avoid unused parameter variables, such as 'synsets'. [UnusedFormalParameter]
 WordNet.java:39: The method body is empty. If this is your intent, document it with a comment. [UncommentedEmptyMethodBody]
-PMD ends with 7 warnings.
+PMD ends with 11 warnings.
 
 
 ================================================================
@@ -86,6 +90,9 @@ PMD ends with 7 warnings.
 
 % checkstyle *.java
 *-----------------------------------------------------------
+[WARN] SAP.java:3:8: Unused import statement for 'edu.princeton.cs.algs4.StdOut'. [UnusedImports]
+[WARN] SAP.java:44:72: ')' is preceded with whitespace. [ParenPad]
+Checkstyle ends with 0 errors and 2 warnings.
 
 % custom checkstyle checks for SAP.java
 *-----------------------------------------------------------
@@ -113,43 +120,18 @@ Test 1: check length() and ancestor() on fixed digraphs
   * digraph1.txt
   * digraph2.txt
   * digraph3.txt
-    - failed on trial 34 of 225
-    - v = 14, w = 7
-    - student   length() = 6
-    - reference length() = 5
-
   * digraph4.txt
-    - failed on trial 82 of 100
-    - v = 1, w = 4
-    - student   length() = 5
-    - reference length() = 3
-
   * digraph5.txt
-    - failed on trial 30 of 484
-    - v = 21, w = 15
-    - student   length() = 9
-    - reference length() = 7
-
   * digraph6.txt
-    - failed on trial 20 of 64
-    - v = 5, w = 0
-    - student   length() = 6
-    - reference length() = 5
-
   * digraph9.txt
-    - failed on trial 4 of 81
-    - v = 3, w = 0
-    - student   length() = 2
-    - reference length() = 1
-
-==> FAILED
+==> passed
 
 Test 2: check length() and ancestor() on WordNet digraph
   * 100 random vertex pairs in digraph-wordnet.txt
-    - failed on trial 5 of 100
-    - v = 65702, w = 76728
-    - student   length() = 8
-    - reference length() = 7
+    - failed on trial 6 of 100
+    - v = 64451, w = 25327
+    - student   length() = 16
+    - reference length() = 15
 
 ==> FAILED
 
@@ -171,26 +153,26 @@ Test 4: check length() and ancestor() on directed cycles
 
 Test 5: check length() and ancestor() on complete graphs
   * 5
-    - failed on trial 2 of 25
-    - v = 0, w = 2
+    - failed on trial 1 of 25
+    - v = 3, w = 0
     - student   length() = 2
     - reference length() = 1
 
   * 10
     - failed on trial 1 of 100
-    - v = 6, w = 4
+    - v = 1, w = 4
     - student   length() = 2
     - reference length() = 1
 
   * 20
     - failed on trial 1 of 400
-    - v = 0, w = 13
+    - v = 17, w = 16
     - student   length() = 2
     - reference length() = 1
 
   * 50
     - failed on trial 1 of 2500
-    - v = 48, w = 25
+    - v = 30, w = 20
     - student   length() = 2
     - reference length() = 1
 
@@ -198,26 +180,26 @@ Test 5: check length() and ancestor() on complete graphs
 
 Test 6: check length() and ancestor() on tournament digraphs
   * 5
-    - failed on trial 2 of 25
-    - v = 0, w = 1
+    - failed on trial 17 of 25
+    - v = 2, w = 1
     - student   length() = 2
     - reference length() = 1
 
   * 10
     - failed on trial 1 of 100
-    - v = 9, w = 2
+    - v = 0, w = 6
     - student   length() = 2
     - reference length() = 1
 
   * 20
     - failed on trial 1 of 400
-    - v = 14, w = 1
-    - student   length() = 3
+    - v = 5, w = 2
+    - student   length() = 6
     - reference length() = 1
 
   * 50
     - failed on trial 1 of 2500
-    - v = 20, w = 31
+    - v = 44, w = 42
     - student   length() = 2
     - reference length() = 1
 
@@ -233,24 +215,24 @@ Test 7: check length() and ancestor() on complete binary trees
 
 Test 8: check length() and ancestor() on random DAGs
   * 5 vertices, 8 edges
-    - failed on trial 2 of 25
-    - v = 1, w = 2
-    - student   length() = 3
-    - reference length() = 2
+    - failed on trial 7 of 25
+    - v = 3, w = 4
+    - student   length() = 2
+    - reference length() = 1
 
-    - failed on trial 1 of 100
+    - failed on trial 3 of 100
 
   * 10 vertices, 40 edges
-    - failed on trial 1 of 100
-    - v = 1, w = 8
+    - failed on trial 2 of 100
+    - v = 1, w = 7
     - student   length() = 2
     - reference length() = 1
 
     - failed on trial 1 of 100
 
   * 20 vertices, 100 edges
-    - failed on trial 5 of 400
-    - v = 6, w = 9
+    - failed on trial 1 of 400
+    - v = 17, w = 11
     - student   length() = 3
     - reference length() = 2
 
@@ -260,25 +242,25 @@ Test 8: check length() and ancestor() on random DAGs
 
 Test 9: check length() and ancestor() on random rooted-in DAGs
   * 5 vertices, 8 edges
-    - failed on trial 7 of 25
-    - v = 3, w = 1
+    - failed on trial 5 of 25
+    - v = 3, w = 2
     - student   length() = 2
     - reference length() = 1
 
     - failed on trial 1 of 100
 
   * 10 vertices, 40 edges
-    - failed on trial 1 of 100
-    - v = 3, w = 0
+    - failed on trial 6 of 100
+    - v = 3, w = 4
     - student   length() = 2
     - reference length() = 1
 
     - failed on trial 1 of 100
 
   * 20 vertices, 100 edges
-    - failed on trial 1 of 400
-    - v = 7, w = 9
-    - student   length() = 2
+    - failed on trial 2 of 400
+    - v = 12, w = 2
+    - student   length() = 3
     - reference length() = 1
 
     - failed on trial 1 of 100
@@ -287,8 +269,8 @@ Test 9: check length() and ancestor() on random rooted-in DAGs
 
 Test 10: check length() and ancestor() on random rooted-out DAGs
   * 5 vertices, 8 edges
-    - failed on trial 4 of 25
-    - v = 0, w = 1
+    - failed on trial 2 of 25
+    - v = 2, w = 0
     - student   length() = 2
     - reference length() = 1
 
@@ -296,17 +278,17 @@ Test 10: check length() and ancestor() on random rooted-out DAGs
 
   * 10 vertices, 40 edges
     - failed on trial 2 of 100
-    - v = 3, w = 8
-    - student   length() = 3
+    - v = 9, w = 7
+    - student   length() = 2
     - reference length() = 1
 
     - failed on trial 1 of 100
 
   * 20 vertices, 100 edges
     - failed on trial 2 of 400
-    - v = 19, w = 8
-    - student   length() = 3
-    - reference length() = 2
+    - v = 3, w = 16
+    - student   length() = 2
+    - reference length() = 1
 
     - failed on trial 1 of 100
 
@@ -326,26 +308,26 @@ Test 12: check length() and ancestor() on random rooted-out trees
 
 Test 13: check length() and ancestor() on random simple digraphs
   * 5 vertices, 8 edges
-    - failed on trial 3 of 25
-    - v = 0, w = 1
-    - student   length() = 2
-    - reference length() = 1
+    - failed on trial 1 of 25
+    - v = 0, w = 4
+    - student   length() = 3
+    - reference length() = 2
 
-    - failed on trial 1 of 100
+    - failed on trial 2 of 100
 
   * 10 vertices, 40 edges
     - failed on trial 3 of 100
-    - v = 2, w = 8
+    - v = 5, w = 0
     - student   length() = 2
     - reference length() = 1
 
     - failed on trial 1 of 100
 
   * 20 vertices, 100 edges
-    - failed on trial 5 of 400
-    - v = 5, w = 18
+    - failed on trial 3 of 400
+    - v = 15, w = 9
     - student   length() = 3
-    - reference length() = 1
+    - reference length() = 2
 
     - failed on trial 1 of 100
 
@@ -354,115 +336,72 @@ Test 13: check length() and ancestor() on random simple digraphs
 Test 14: check whether two SAP objects can be created at the same time
   * digraph1.txt and digraph2.txt
   * digraph3.txt and digraph4.txt
-    - v = 0, w = 8
-    - (digraph3.txt) student   length() = 4
-    - (digraph3.txt) reference length() = 3
-
   * digraph5.txt and digraph6.txt
-    - v = 7, w = 17
-    - (digraph5.txt) student   length() = 7
-    - (digraph5.txt) reference length() = 5
-
   * digraph2.txt and digraph1.txt
-==> FAILED
+==> passed
 
 Test 15: check whether SAP is immutable
   * digraph1.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 3
-    - student length before = 2
-    - student length after  = 1
-
   * digraph2.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 2
-    - student length before = 4
-    - student length after  = 1
-
   * digraph3.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 1
-    - student length before = -1
-    - student length after  = 1
-
   * digraph4.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 1
-    - student length before = 3
-    - student length after  = 1
-
   * digraph5.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 1
-    - student length before = -1
-    - student length after  = 1
-
   * digraph6.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 2
-    - student length before = 2
-    - student length after  = 1
-
   * digraph-ambiguous-ancestor.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 2
-    - student length before = 2
-    - student length after  = 1
-
-==> FAILED
+==> passed
 
 Test 16: check length() and ancestor() with iterable arguments
   * 100 random subsets of 1 and 1 vertices in digraph-wordnet.txt
     - failed on trial 1 of 100
-    - v = { 51566 }
-    - w = { 13306 }
-    - student   length   = -1
-    - reference length   = 14
-    - student   ancestor = -1
-    - reference ancestor = 18840
-
-  * 100 random subsets of 1 and 2 vertices in digraph-wordnet.txt
-    - failed on trial 1 of 100
-    - v = { 32688 }
-    - w = { 3232, 44780 }
-    - student   length   = -1
-    - reference length   = 9
-    - student   ancestor = -1
-    - reference ancestor = 44437
-
-  * 100 random subsets of 2 and 1 vertices in digraph-wordnet.txt
-    - failed on trial 1 of 100
-    - v = { 4785, 24661 }
-    - w = { 27633 }
+    - v = { 12539 }
+    - w = { 70522 }
     - student   length   = -1
     - reference length   = 10
     - student   ancestor = -1
-    - reference ancestor = 38545
+    - reference ancestor = 60600
 
-  * 100 random subsets of 2 and 2 vertices in digraph-wordnet.txt
+  * 100 random subsets of 1 and 2 vertices in digraph-wordnet.txt
     - failed on trial 1 of 100
-    - v = { 9386, 30702 }
-    - w = { 15967, 35008 }
+    - v = { 19241 }
+    - w = { 56142, 59162 }
+    - student   length   = -1
+    - reference length   = 9
+    - student   ancestor = -1
+    - reference ancestor = 81004
+
+  * 100 random subsets of 2 and 1 vertices in digraph-wordnet.txt
+    - failed on trial 1 of 100
+    - v = { 31152, 37554 }
+    - w = { 72834 }
     - student   length   = -1
     - reference length   = 11
     - student   ancestor = -1
-    - reference ancestor = 60600
+    - reference ancestor = 38003
+
+  * 100 random subsets of 2 and 2 vertices in digraph-wordnet.txt
+    - failed on trial 1 of 100
+    - v = { 9958, 63510 }
+    - w = { 4298, 62815 }
+    - student   length   = -1
+    - reference length   = 10
+    - student   ancestor = -1
+    - reference ancestor = 19171
 
   * 100 random subsets of 3 and 11 vertices in digraph-wordnet.txt
     - failed on trial 1 of 100
-    - v = { 20831, 28214, 80572 }
-    - w size = 11
+    - v = { 21160, 37008, 41143 }
+    - w = { 8037, 20092, 20626, 27515, 43088, 45468, 52602, 60599, 63449, 72502, 72859 }
     - student   length   = -1
-    - reference length   = 7
+    - reference length   = 10
     - student   ancestor = -1
-    - reference ancestor = 58166
+    - reference ancestor = 18840
 
   * 100 random subsets of 11 and 3 vertices in digraph-wordnet.txt
     - failed on trial 1 of 100
-    - v size = 11
-    - w = { 7342, 34346, 37721 }
+    - v = { 613, 4080, 18982, 25978, 34010, 48889, 50714, 52092, 62612, 76156, 77435 }
+    - w = { 6004, 26106, 68043 }
     - student   length   = -1
-    - reference length   = 4
+    - reference length   = 5
     - student   ancestor = -1
     - reference ancestor = 42539
 
@@ -476,23 +415,7 @@ Test 17: check length() and ancestor() with zero-length iterable arguments
 
 Test 18: check length() and ancestor() with invalid arguments
   * G = digraph1.txt v = -1, w = 0
-    - throws the wrong exception when calling length() with an invalid argument
-    - length() throws a java.lang.IndexOutOfBoundsException
-    - length should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with an invalid argument
-    - ancestor() throws a java.lang.IndexOutOfBoundsException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
   * G = digraph1.txt v = 0, w = -1
-    - throws the wrong exception when calling length() with an invalid argument
-    - length() throws a java.lang.IndexOutOfBoundsException
-    - length should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with an invalid argument
-    - ancestor() throws a java.lang.IndexOutOfBoundsException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
   * G = digraph1.txt v = 13, w = 0
     - throws the wrong exception when calling length() with an invalid argument
     - length() throws a java.lang.ArrayIndexOutOfBoundsException
@@ -514,59 +437,35 @@ Test 18: check length() and ancestor() with invalid arguments
 ==> FAILED
 
 Test 19: check iterable versions of length() and ancestor() with invalid arguments
-  * G = digraph1.txt, v = { 3, 8, 9 }, w = null
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
-  * G = digraph1.txt, v = null, w = { 0, 5, 7, 11 }
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
+  * G = digraph1.txt, v = { 0, 5, 6, 8, 11 }, w = null
+  * G = digraph1.txt, v = null, w = { 1, 2, 3, 7, 10, 12 }
   * G = digraph1.txt, v = null, w = null
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
-  * G = digraph1.txt, v = { -1, 3, 8, 9 }, w = { 0, 5, 7, 11 }
+  * G = digraph1.txt, v = { 0, 5, 6, 8, 11, -1 }, w = { 1, 2, 3, 7, 10, 12 }
     - fails to throw an exception when calling length() with invalid argument
 
     - fails to throw an exception when calling ancestor() with invalid argument
 
-  * G = digraph1.txt, v = { 3, 8, 9 }, w = { -1, 0, 5, 7, 11 }
+  * G = digraph1.txt, v = { 0, 5, 6, 8, 11 }, w = { 1, -1, 2, 3, 7, 10, 12 }
     - fails to throw an exception when calling length() with invalid argument
 
     - fails to throw an exception when calling ancestor() with invalid argument
 
-  * G = digraph1.txt, v = { 13, 3, 8, 9 }, w = { 0, 5, 7, 11 }
+  * G = digraph1.txt, v = { 0, 5, 6, 8, 13, 11 }, w = { 1, 2, 3, 7, 10, 12 }
     - fails to throw an exception when calling length() with invalid argument
 
     - fails to throw an exception when calling ancestor() with invalid argument
 
-  * G = digraph1.txt, v = { 3, 8, 9 }, w = { 0, 5, 13, 7, 11 }
+  * G = digraph1.txt, v = { 0, 5, 6, 8, 11 }, w = { 1, 2, 3, 7, 13, 10, 12 }
     - fails to throw an exception when calling length() with invalid argument
 
     - fails to throw an exception when calling ancestor() with invalid argument
 
-  * G = digraph1.txt, v = { 3, null, 8, 9 }, w = { 0, 5, 7, 11 }
+  * G = digraph1.txt, v = { 0, 5, null, 6, 8, 11 }, w = { 1, 2, 3, 7, 10, 12 }
     - fails to throw an exception when calling length() with invalid argument
 
     - fails to throw an exception when calling ancestor() with invalid argument
 
-  * G = digraph1.txt, v = { 3, 8, 9 }, w = { 0, null, 5, 7, 11 }
+  * G = digraph1.txt, v = { 0, 5, 6, 8, 11 }, w = { 1, 2, null, 3, 7, 10, 12 }
     - fails to throw an exception when calling length() with invalid argument
 
     - fails to throw an exception when calling ancestor() with invalid argument
@@ -577,24 +476,32 @@ Test 20: random calls to both version of length() and ancestor(),
          with probabilities p1 and p2, respectively
   * random calls in a random rooted DAG (20 vertices, 100 edges)
     (p1 = 0.5, p2 = 0.5)
-    - failed on call 1 to length()
-    - v = { 7, 10, 11, 12, 17 }
-    - w = { 2, 4, 5, 10 }
-    - student   length() = -1
-    - reference length() = 0
+
+    java.lang.IllegalArgumentException: vertex -1 is not between 0 and 19
+
+    edu.princeton.cs.algs4.BreadthFirstDirectedPaths226.validateVertex(BreadthFirstDirectedPaths226.java:115)
+    edu.princeton.cs.algs4.BreadthFirstDirectedPaths226.distTo(BreadthFirstDirectedPaths226.java:88)
+    TestSAP.random(TestSAP.java:1137)
+    TestSAP.randomRootedInDAG(TestSAP.java:1187)
+    TestSAP.test20(TestSAP.java:1218)
+    TestSAP.main(TestSAP.java:1311)
 
   * random calls in a random digraph (20 vertices, 100 edges)
     (p1 = 0.5, p2 = 0.5)
-    - failed on call 1 to length()
-    - v                  = 11
-    - w                  = 15
-    - student   length() = 3
-    - reference length() = 2
+
+    java.lang.IllegalArgumentException: vertex -1 is not between 0 and 19
+
+    edu.princeton.cs.algs4.BreadthFirstDirectedPaths226.validateVertex(BreadthFirstDirectedPaths226.java:115)
+    edu.princeton.cs.algs4.BreadthFirstDirectedPaths226.distTo(BreadthFirstDirectedPaths226.java:88)
+    TestSAP.random(TestSAP.java:1137)
+    TestSAP.randomSimple(TestSAP.java:1201)
+    TestSAP.test20(TestSAP.java:1219)
+    TestSAP.main(TestSAP.java:1311)
 
 ==> FAILED
 
 
-Total: 6/20 tests passed!
+Total: 9/20 tests passed!
 
 
 ================================================================
@@ -609,10 +516,10 @@ Running 14 total tests.
 Test 1: check distance() with random noun pairs
   * 1000 pairs using synsets = synsets.txt; hypernyms = hypernyms.txt
     - failed on pair 1 of 1000
-    - nounA = Branta_leucopsis
-    - nounB = alliterator
+    - nounA = golden_pothos
+    - nounB = family_Aceraceae
     - student   distance() = -1
-    - reference distance() = 13
+    - reference distance() = 17
 
 ==> FAILED
 
@@ -678,22 +585,22 @@ Test 2: check distance() with all noun pairs
 Test 3: check distance() with random noun pairs
   * 1000 pairs using synsets = synsets100-subgraph.txt; hypernyms = hypernyms100-subgraph.txt
     - failed on pair 1 of 1000
-    - nounA = proteome
-    - nounB = serum_globulin
+    - nounA = beta_globulin
+    - nounB = unit
     - student   distance() = -1
-    - reference distance() = 4
+    - reference distance() = 6
 
   * 1000 pairs using synsets = synsets500-subgraph.txt; hypernyms = hypernyms500-subgraph.txt
     - failed on pair 1 of 1000
-    - nounA = isomerase
-    - nounB = athar
+    - nounA = lubricating_oil
+    - nounB = tetanus_antitoxin
     - student   distance() = -1
     - reference distance() = 7
 
   * 1000 pairs using synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
     - failed on pair 1 of 1000
-    - nounA = lower_jawbone
-    - nounB = sinoatrial_node
+    - nounA = jawbone
+    - nounB = Purkinje_network
     - student   distance() = -1
     - reference distance() = 7
 
@@ -702,12 +609,12 @@ Test 3: check distance() with random noun pairs
 Test 4: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets.txt; hypernyms = hypernyms.txt
     - student returns invalid synset on pair 1 of 1000
-    - nounA = pushchair
-    - nounB = syndicalism
+    - nounA = Bellis_perennis
+    - nounB = tolu_balsam
     - student   distance() = -1
-    - reference distance() = 14
+    - reference distance() = 20
     - student   sap() = ''
-    - reference sap() = 'entity'
+    - reference sap() = 'physical_entity'
 
 ==> FAILED
 
@@ -789,30 +696,30 @@ Test 5: check sap() with all noun pairs
 Test 6: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets100-subgraph.txt; hypernyms = hypernyms100-subgraph.txt
     - student returns invalid synset on pair 1 of 1000
-    - nounA = prolamine
-    - nounB = crackerjack
+    - nounA = iodinated_protein
+    - nounB = iodinated_protein
     - student   distance() = -1
-    - reference distance() = 10
+    - reference distance() = 0
     - student   sap() = ''
-    - reference sap() = 'entity'
+    - reference sap() = 'iodoprotein iodinated_protein'
 
   * 1000 pairs using synsets = synsets500-subgraph.txt; hypernyms = hypernyms500-subgraph.txt
     - student returns invalid synset on pair 1 of 1000
-    - nounA = conjugated_protein
-    - nounB = walnut_oil
+    - nounA = cluster_of_differentiation_4
+    - nounB = dandruff
     - student   distance() = -1
-    - reference distance() = 7
+    - reference distance() = 12
     - student   sap() = ''
-    - reference sap() = 'macromolecule supermolecule'
+    - reference sap() = 'thing'
 
   * 1000 pairs using synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
     - student returns invalid synset on pair 1 of 1000
-    - nounA = atrioventricular_trunk
-    - nounB = os_nasale
+    - nounA = mons_veneris
+    - nounB = female_reproductive_system
     - student   distance() = -1
-    - reference distance() = 6
+    - reference distance() = 7
     - student   sap() = ''
-    - reference sap() = 'animal_tissue'
+    - reference sap() = 'body_part'
 
 ==> FAILED
 
@@ -976,32 +883,37 @@ Test 13: call isNoun() with a null argument
 Test 14: random calls to isNoun(), distance(), and sap(), with
          probabilities p1, p2, and p3, respectively
   * 100 random calls (p1 = 0.5, p2 = 0.5, p3 = 0.0)
-    - failed on call 1 to isNoun()
-    - word               = a
-    - student   isNoun() = false
-    - reference isNoun() = true
-
-  * 100 random calls (p1 = 0.5, p2 = 0.0, p3 = 0.5)
-    - failed on call 1 to isNoun()
-    - word               = chalcedony
-    - student   isNoun() = false
-    - reference isNoun() = true
-
-  * 100 random calls (p1 = 0.0, p2 = 0.5, p3 = 0.5)
-    - failed on call 1 to distance()
-    - nounA = atomic_number_43
-    - nounB = archaebacterium
+    - failed on call 2 to distance()
+    - nounA = parsnip
+    - nounB = school_newspaper
     - student   distance() = -1
     - reference distance() = 12
 
+  * 100 random calls (p1 = 0.5, p2 = 0.0, p3 = 0.5)
+    - student returns invalid synset on pair 1 of 100
+    - nounA = amino_resin
+    - nounB = left-handedness
+    - student   distance() = -1
+    - reference distance() = 10
+    - student   sap() = ''
+    - reference sap() = 'entity'
+
+    - failed on call 1 to sap()
+  * 100 random calls (p1 = 0.0, p2 = 0.5, p3 = 0.5)
+    - failed on call 1 to distance()
+    - nounA = roustabout
+    - nounB = Lydia_Kamekeha_Paki_Liliuokalani
+    - student   distance() = -1
+    - reference distance() = 10
+
   * 100 random calls (p1 = 0.2, p2 = 0.4, p3 = 0.4)
     - student returns invalid synset on pair 1 of 100
-    - nounA = pontiff
-    - nounB = uke
+    - nounA = inhaler
+    - nounB = shattering
     - student   distance() = -1
-    - reference distance() = 13
+    - reference distance() = 17
     - student   sap() = ''
-    - reference sap() = 'whole unit'
+    - reference sap() = 'entity'
 
     - failed on call 1 to sap()
 ==> FAILED
@@ -1198,9 +1110,9 @@ Running 1 total tests.
 digraph G             = digraph-wordnet.txt
 vertices in G         = 82192
 edges    in G         = 84505
-student     memory    = 9663016 bytes
-reference   memory    = 10320552 bytes
-ratio                 = 0.94
+student     memory    = 8347912 bytes
+reference   memory    = 10320408 bytes
+ratio                 = 0.81
 maximum allowed ratio = 2.50
 
 Total: 1/1 tests passed!
@@ -1219,7 +1131,7 @@ Test 1a: check memory of WordNet object
     - number of vertices in digraph = 1000
     - number of edges    in digraph = 1008
     - student   memory              = 16 bytes
-    - reference memory              = 1494080 bytes
+    - reference memory              = 1441648 bytes
     - student / reference ratio     = 0.0
     - maximum allowed rato          = 2.0
 
@@ -1230,7 +1142,7 @@ Test 1b: check memory of WordNet object
     - number of vertices in digraph = 5000
     - number of edges    in digraph = 5059
     - student   memory              = 16 bytes
-    - reference memory              = 7296416 bytes
+    - reference memory              = 7041792 bytes
     - student / reference ratio     = 0.0
     - maximum allowed rato          = 2.0
 
@@ -1241,7 +1153,7 @@ Test 1c: check memory of WordNet object
     - number of vertices in digraph = 10000
     - number of edges    in digraph = 10087
     - student   memory              = 16 bytes
-    - reference memory              = 16930936 bytes
+    - reference memory              = 16171880 bytes
     - student / reference ratio     = 0.0
     - maximum allowed rato          = 2.0
 
@@ -1270,21 +1182,20 @@ Test 1: time SAP constructor
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  484376.00
-     -  student   solution calls per second:   34743.00
-     -  reference / student ratio:                13.94
+     -  reference solution calls per second: 1131968.00
+     -  student   solution calls per second:    2586.00
+     -  reference / student ratio:               437.73
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
 => passed      student <=  1000x reference
-=> BONUS       student <=   100x reference
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  185038.00
-     -  student   solution calls per second:  887910.00
-     -  reference / student ratio:                 0.21
+     -  reference solution calls per second:  281406.00
+     -  student   solution calls per second: 2229398.00
+     -  reference / student ratio:                 0.13
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -1296,9 +1207,9 @@ Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   11549.00
-     -  student   solution calls per second:  109122.00
-     -  reference / student ratio:                 0.11
+     -  reference solution calls per second:   14531.00
+     -  student   solution calls per second:  106894.00
+     -  reference / student ratio:                 0.14
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -1312,10 +1223,11 @@ Test 5: Time 10 calls to length() and ancestor() on random path graphs
 
              V  seconds
         ---------------
+         65536     0.11
 ==> passed
 
 
-Total: 20/14 tests passed!
+Total: 19/14 tests passed!
 
 
 ================================================================
@@ -1394,9 +1306,9 @@ Test 5: time WordNet constructor
 
 Test 6a-e: time sap() and distance() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  166412.25
-    - student   solution calls per second:  502608.25
-    - reference / student ratio:                 0.33
+    - reference solution calls per second:  292792.00
+    - student   solution calls per second: 1562455.25
+    - reference / student ratio:                 0.19
 
 => passed    student <= 10000x reference
 => passed    student <=  1000x reference
@@ -1407,9 +1319,9 @@ Test 6a-e: time sap() and distance() with random nouns
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  468713.00
-    - student   solution calls per second:  494715.00
-    - reference / student ratio:                 0.95
+    - reference solution calls per second: 1250452.00
+    - student   solution calls per second: 1635493.00
+    - reference / student ratio:                 0.76
     - allowed ratio:                             4.00
 ==> passed
 
@@ -1480,3 +1392,4 @@ Total: 1/2 tests passed!
 
 
 ================================================================
+
