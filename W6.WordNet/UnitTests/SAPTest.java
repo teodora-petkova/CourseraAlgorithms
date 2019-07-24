@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import junit.framework.TestCase;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Digraph;
@@ -18,6 +19,11 @@ public class SAPTest extends TestCase {
         assertEquals("", 3, sap.ancestor(3, 3));
         assertEquals("", 1, sap.ancestor(11, 7));
         assertEquals("", 5, sap.length(11, 7));
+        
+        Iterable<Integer> a1 = Arrays.asList(new Integer[]{2, 5});
+        Iterable<Integer> a2 = Arrays.asList(new Integer[]{7, 7});
+        assertEquals("", 1, sap.ancestor(a1,a2));
+        assertEquals("", 3, sap.length(a1,a2));
     }
     
     public void test2() {
