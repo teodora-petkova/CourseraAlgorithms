@@ -5,7 +5,6 @@ public class DeluxeBFS {
     
     private static final int INFINITY = Integer.MAX_VALUE;
     private boolean[] marked;  // marked[v] = is there an s->v path?
-    private int[] edgeTo;      // edgeTo[v] = last edge on shortest s->v path
     private int[] distTo;      // distTo[v] = length of shortest s->v path
 
     public DeluxeBFS(Digraph G, Iterable<Integer> sources) {
@@ -44,7 +43,6 @@ public class DeluxeBFS {
         int ancestor = -1;
         
         validateVertices(destinations);
-        
         for (int d : destinations)
         {
             boolean[] currentMarked = new boolean[G.V()];
@@ -58,6 +56,7 @@ public class DeluxeBFS {
             q.enqueue(d);
             while (!q.isEmpty()) {
                 int v = q.dequeue();
+                
                 int distBetweenSourceAndDistination = distTo[v] + currentDistTo[v];
                 if (marked[v] && length > distBetweenSourceAndDistination)
                 {

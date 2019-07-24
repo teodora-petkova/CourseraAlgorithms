@@ -10,7 +10,7 @@ import edu.princeton.cs.algs4.Digraph;
 
 public class WordNet {
 
-    private final Map<String, Integer> synsets = new HashMap<String, Integer>();
+    private final Map<String, List<Integer>> synsets = new HashMap<String, List<Integer>>();
     private final Map<Integer, String> synsetStrings =
         new HashMap<Integer, String>();
     
@@ -62,11 +62,12 @@ public class WordNet {
     {
         checkIsNoun(nounA);
         checkIsNoun(nounB);
-        int idA = synsets.get(nounA);
-        int idB = synsets.get(nounB);
+        Iterable<Integer> idsA = synsets.get(nounA);
+        Iterable<Integer> idsB = synsets.get(nounB);
+        
         
         SAP sap = new SAP(this.dag);
-        return sap.length(idA, idB);
+        return sap.length(idsA, idsB);
     }
     
     // a synset (second field of synsets.txt) that is 
@@ -76,11 +77,10 @@ public class WordNet {
     {
         checkIsNoun(nounA);
         checkIsNoun(nounB);
-        int idA = synsets.get(nounA);
-        int idB = synsets.get(nounB);
-        
+        Iterable<Integer> idsA = synsets.get(nounA);
+        Iterable<Integer> idsB = synsets.get(nounB);
         SAP sap = new SAP(this.dag);
-        int idSAP = sap.ancestor(idA, idB);
+        int idSAP = sap.ancestor(idsA, idsB);
         return synsetStrings.get(idSAP);       
     }
     
@@ -94,14 +94,23 @@ public class WordNet {
             while (inputSynset.hasNextLine()) {
                 String nextLine = inputSynset.nextLine();
                 List<String> line = Arrays.asList(nextLine.split(","));
-                if (line.size() == 3)
+                if (line.size() >= 2)
                 {
                     int id = Integer.parseInt(line.get(0));
                     String synsetString = line.get(1);
                     List<String> synsetlist = Arrays.asList(synsetString.split(" "));
                     for (String synset : synsetlist)
                     {
-                        synsets.put(synset, id);
+                        if (!synsets.containsKey(synset))
+                        {
+                            synsets.put(synset, new ArrayList<Integer>(Arrays.asList(id)));
+                        }
+                        else    
+                        {
+                            List<Integer> newIds = synsets.get(synset);
+                            newIds.add(id);
+                            synsets.put(synset, newIds);
+                        }
                     }
                     synsetStrings.put(id, synsetString);
                 }
