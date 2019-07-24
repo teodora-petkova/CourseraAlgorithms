@@ -54,6 +54,9 @@ public class WordNet {
     // is the word a WordNet noun?
     public boolean isNoun(String word)
     {
+        if (word == null) {
+            throw new IllegalArgumentException("the argument is null!");
+        }
         return synsets.containsKey(word);
     }
     
@@ -160,7 +163,7 @@ public class WordNet {
     private void checkIsNoun(String noun)
     {
         if (!isNoun(noun)) {
-            throw new IllegalArgumentException("the argument is not a noun!");
+            throw new IllegalArgumentException("the argument '" + noun + "' is not a noun!");
         }
     }
 }

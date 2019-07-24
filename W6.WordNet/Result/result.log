@@ -6,25 +6,25 @@ Compilation:  PASSED
 API:          PASSED
 
 Spotbugs:     FAILED (3 warnings)
-PMD:          FAILED (5 warnings)
-Checkstyle:   FAILED (0 errors, 1 warning)
+PMD:          FAILED (3 warnings)
+Checkstyle:   PASSED
 
-Correctness:  32/36 tests passed
+Correctness:  35/36 tests passed
 Memory:       4/4 tests passed
-Timing:       19/27 tests passed
+Timing:       20/27 tests passed
 
-Aggregate score: 87.41%
+Aggregate score: 93.15%
 [Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
- 197 Jul 24 12:35 CommonAncestor.java
-3.2K Jul 24 12:35 DeluxeBFS.java
- 343 Jul 24 12:35 Outcast.java
-2.6K Jul 24 12:35 SAP.java
-5.7K Jul 24 12:35 WordNet.java
+ 197 Jul 24 13:36 CommonAncestor.java
+3.2K Jul 24 13:36 DeluxeBFS.java
+ 829 Jul 24 13:36 Outcast.java
+2.6K Jul 24 13:36 SAP.java
+5.8K Jul 24 13:36 WordNet.java
 
 
 ********************************************************************************
@@ -63,9 +63,9 @@ Outcast:
 
 % spotbugs *.class
 *-----------------------------------------------------------
-M C LUI_USE_SINGLETON_LIST LUI: Method WordNet.readSynsets(String) builds a list from one element using Arrays.asList rather than Collections.singletonList  At WordNet.java:[line 106]
-H I DM_DEFAULT_ENCODING Dm: The method or constructor call 'new java.util.Scanner(File)' relies on the default encoding when performing a byte-to-String (or String-to-byte) conversion.  At WordNet.java:[line 92]
-H I DM_DEFAULT_ENCODING Dm: The method or constructor call 'new java.util.Scanner(File)' relies on the default encoding when performing a byte-to-String (or String-to-byte) conversion.  At WordNet.java:[line 133]
+M C LUI_USE_SINGLETON_LIST LUI: Method WordNet.readSynsets(String) builds a list from one element using Arrays.asList rather than Collections.singletonList  At WordNet.java:[line 109]
+H I DM_DEFAULT_ENCODING Dm: The method or constructor call 'new java.util.Scanner(File)' relies on the default encoding when performing a byte-to-String (or String-to-byte) conversion.  At WordNet.java:[line 95]
+H I DM_DEFAULT_ENCODING Dm: The method or constructor call 'new java.util.Scanner(File)' relies on the default encoding when performing a byte-to-String (or String-to-byte) conversion.  At WordNet.java:[line 136]
 Warnings generated: 3
 
 
@@ -76,10 +76,8 @@ Warnings generated: 3
 *-----------------------------------------------------------
 CommonAncestor.java:2: All instance (and static) variables must be 'private'. [OnlyPrivateInstanceVariables]
 CommonAncestor.java:3: All instance (and static) variables must be 'private'. [OnlyPrivateInstanceVariables]
-Outcast.java:3: Avoid unused parameter variables, such as 'wordnet'. [UnusedFormalParameter]
-Outcast.java:13: The method body is empty. If this is your intent, document it with a comment. [UncommentedEmptyMethodBody]
-WordNet.java:138: Use the 'isEmpty()' method instead of comparing 'size()' to '0'. [UseCollectionIsEmpty]
-PMD ends with 5 warnings.
+WordNet.java:141: Use the 'isEmpty()' method instead of comparing 'size()' to '0'. [UseCollectionIsEmpty]
+PMD ends with 3 warnings.
 
 
 ================================================================
@@ -87,8 +85,6 @@ PMD ends with 5 warnings.
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] WordNet.java:104:25: 'if' is not followed by whitespace. [WhitespaceAround]
-Checkstyle ends with 0 errors and 1 warning.
 
 % custom checkstyle checks for SAP.java
 *-----------------------------------------------------------
@@ -374,10 +370,7 @@ Test 12: call distance() and sap() with invalid arguments
 
 Test 13: call isNoun() with a null argument
   * synsets15.txt, hypernyms15Path.txt
-    - isNoun(null) fails to throw an exception
-    - it should throw a java.lang.IllegalArgumentException
-
-==> FAILED
+==> passed
 
 Test 14: random calls to isNoun(), distance(), and sap(), with
          probabilities p1, p2, and p3, respectively
@@ -388,7 +381,7 @@ Test 14: random calls to isNoun(), distance(), and sap(), with
 ==> passed
 
 
-Total: 12/14 tests passed!
+Total: 13/14 tests passed!
 
 
 ================================================================
@@ -403,168 +396,44 @@ Running 2 total tests.
 Test 1: check outcast() on WordNet digraph
         (synsets.txt and hypernyms.txt)
   * outcast2.txt
-    - nouns = [Turing, von_Neumann]
-    - student   outcast() = 
-    - reference outcast() = Turing
-
   * outcast3.txt
-    - nouns = [Turing, von_Neumann, Mickey_Mouse]
-    - student   outcast() = 
-    - reference outcast() = Mickey_Mouse
-
   * outcast4.txt
-    - nouns = [probability, statistics, mathematics, physics]
-    - student   outcast() = 
-    - reference outcast() = probability
-
   * outcast5.txt
-    - nouns = [horse, zebra, cat, bear, table]
-    - student   outcast() = 
-    - reference outcast() = table
-
   * outcast5a.txt
-    - nouns = [earth, fire, air, water, heart]
-    - student   outcast() = 
-    - reference outcast() = heart
-
   * outcast7.txt
-    - nouns = [Asia, Australia, North_America, India, Europe, Antarctica, South_America]
-    - student   outcast() = 
-    - reference outcast() = India
-
   * outcast8.txt
-    - nouns = [water, soda, bed, orange_juice, milk, apple_juice, tea, coffee]
-    - student   outcast() = 
-    - reference outcast() = bed
-
   * outcast8a.txt
-    - nouns = [Banti's_disease, hyperadrenalism, German_measles, gargoylism, Q_fever, amebiosis, anthrax, playboy]
-    - student   outcast() = 
-    - reference outcast() = playboy
-
   * outcast8b.txt
-    - nouns = [apple, orange, banana, grape, strawberry, cabbage, mango, watermelon]
-    - student   outcast() = 
-    - reference outcast() = cabbage
-
   * outcast8c.txt
-    - nouns = [car, auto, truck, plane, tree, train, vehicle, van]
-    - student   outcast() = 
-    - reference outcast() = tree
-
   * outcast9.txt
-    - nouns = [lumber, wood, tree, leaf, nail, house, building, edifice, structure]
-    - student   outcast() = 
-    - reference outcast() = tree
-
   * outcast9a.txt
-    - nouns = [hair, eyes, arm, mouth, nose, ear, cheek, brow, chin]
-    - student   outcast() = 
-    - reference outcast() = eyes
-
   * outcast10.txt
-    - nouns = [cat, cheetah, dog, wolf, albatross, horse, zebra, lemur, orangutan, chimpanzee]
-    - student   outcast() = 
-    - reference outcast() = albatross
-
   * outcast10a.txt
-    - nouns = [blue, green, yellow, brown, black, white, orange, violet, red, serendipity]
-    - student   outcast() = 
-    - reference outcast() = serendipity
-
   * outcast11.txt
-    - nouns = [apple, pear, peach, banana, lime, lemon, blueberry, strawberry, mango, watermelon, potato]
-    - student   outcast() = 
-    - reference outcast() = potato
-
   * outcast12.txt
-    - nouns = [Dylan, folk, Guthrie, idol, Minneapolis, music, musical, playing, public, recognition, review, thunderbird]
-    - student   outcast() = 
-    - reference outcast() = Minneapolis
-
   * outcast12a.txt
-    - nouns = [competition, cup, event, fielding, football, level, practice, prestige, team, tournament, world, mongoose]
-    - student   outcast() = 
-    - reference outcast() = mongoose
-
   * outcast17.txt
-    - nouns = [art, canvas, china, culture, kingdom, particularism, point, portable, ritual, road, script, sculpture, silk, style, transmission, wall, toluene]
-    - student   outcast() = 
-    - reference outcast() = particularism
-
   * outcast20.txt
-    - nouns = [art, Buddha, Buddhism, canvas, china, culture, India, kingdom, particularism, point, portable, ritual, road, script, sculpture, silk, style, transmission, wall, toluene]
-    - student   outcast() = 
-    - reference outcast() = particularism
-
   * outcast29.txt
-    - nouns = [acorn, application, assembly, award, basic, cad, code, computer, custom, depth, development, finish, hardware, instruction, language, machine, model, operation, processor, project, silicon, simulation, software, speed, support, team, technology, test, mosque]
-    - student   outcast() = 
-    - reference outcast() = acorn
-
-==> FAILED
+==> passed
 
 Test 2: check outcast() on WordNet subgraph
         (synsets50000-subgraph.txt and hypernyms50000-subgraph.txt)
   * outcast2.txt
-    - nouns = [Turing, von_Neumann]
-    - student   outcast() = 
-    - reference outcast() = Turing
-
   * outcast3.txt
-    - nouns = [Turing, von_Neumann, Mickey_Mouse]
-    - student   outcast() = 
-    - reference outcast() = Mickey_Mouse
-
   * outcast5.txt
-    - nouns = [horse, zebra, cat, bear, table]
-    - student   outcast() = 
-    - reference outcast() = table
-
   * outcast5a.txt
-    - nouns = [earth, fire, air, water, heart]
-    - student   outcast() = 
-    - reference outcast() = heart
-
   * outcast7.txt
-    - nouns = [Asia, Australia, North_America, India, Europe, Antarctica, South_America]
-    - student   outcast() = 
-    - reference outcast() = India
-
   * outcast8.txt
-    - nouns = [water, soda, bed, orange_juice, milk, apple_juice, tea, coffee]
-    - student   outcast() = 
-    - reference outcast() = bed
-
   * outcast8b.txt
-    - nouns = [apple, orange, banana, grape, strawberry, cabbage, mango, watermelon]
-    - student   outcast() = 
-    - reference outcast() = cabbage
-
   * outcast8c.txt
-    - nouns = [car, auto, truck, plane, tree, train, vehicle, van]
-    - student   outcast() = 
-    - reference outcast() = tree
-
   * outcast9.txt
-    - nouns = [lumber, wood, tree, leaf, nail, house, building, edifice, structure]
-    - student   outcast() = 
-    - reference outcast() = tree
-
   * outcast10.txt
-    - nouns = [cat, cheetah, dog, wolf, albatross, horse, zebra, lemur, orangutan, chimpanzee]
-    - student   outcast() = 
-    - reference outcast() = albatross
-
   * outcast11.txt
-    - nouns = [apple, pear, peach, banana, lime, lemon, blueberry, strawberry, mango, watermelon, potato]
-    - student   outcast() = 
-    - reference outcast() = potato
-
-==> FAILED
+==> passed
 
 
-Total: 0/2 tests passed!
+Total: 2/2 tests passed!
 
 
 ================================================================
@@ -610,7 +479,7 @@ Test 1b: check memory of WordNet object
   * synsets = synsets5000-subgraph.txt; hypernyms = hypernyms5000-subgraph.txt
     - number of vertices in digraph = 5000
     - number of edges    in digraph = 5059
-    - student   memory              = 2997888 bytes
+    - student   memory              = 2997952 bytes
     - reference memory              = 7042320 bytes
     - student / reference ratio     = 0.4
     - maximum allowed rato          = 2.0
@@ -651,9 +520,9 @@ Test 1: time SAP constructor
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second: 1085843.00
-     -  student   solution calls per second:    3858.00
-     -  reference / student ratio:               281.45
+     -  reference solution calls per second: 1272314.00
+     -  student   solution calls per second:    3906.00
+     -  reference / student ratio:               325.73
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
@@ -662,9 +531,9 @@ Test 2a-c: time length() and ancestor() with random pairs of vertices
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  306286.00
-     -  student   solution calls per second:    1291.00
-     -  reference / student ratio:               237.25
+     -  reference solution calls per second:  331986.00
+     -  student   solution calls per second:    1297.00
+     -  reference / student ratio:               255.96
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -673,9 +542,9 @@ Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   20791.00
-     -  student   solution calls per second:      77.00
-     -  reference / student ratio:               270.01
+     -  reference solution calls per second:   23027.00
+     -  student   solution calls per second:      78.00
+     -  reference / student ratio:               295.22
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -687,7 +556,7 @@ Test 5: Time 10 calls to length() and ancestor() on random path graphs
 
              V  seconds
         ---------------
-         65536     0.18
+         65536     0.09
 ==> passed
 
 
@@ -747,7 +616,7 @@ Test 4: count Digraph operations during 1000 calls each
     - the distance() and sap() methods should not need to create new digraphs
 
   * calls to addEdge()   = 0
-  * calls to adj()       = 46298
+  * calls to adj()       = 46500
   * calls to reverse()   = 0
   * calls to toString()  = 0
 
@@ -762,9 +631,9 @@ Test 5: time WordNet constructor
 
 Test 6a-e: time sap() and distance() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  312977.00
-    - student   solution calls per second:     136.00
-    - reference / student ratio:              2301.30
+    - reference solution calls per second:  344139.25
+    - student   solution calls per second:     134.50
+    - reference / student ratio:              2558.66
 
 => passed    student <= 10000x reference
 => FAILED    student <=  1000x reference
@@ -774,9 +643,9 @@ Test 6a-e: time sap() and distance() with random nouns
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second: 1274589.00
-    - student   solution calls per second: 1132061.00
-    - reference / student ratio:                 1.13
+    - reference solution calls per second: 1397820.00
+    - student   solution calls per second: 1196419.00
+    - reference / student ratio:                 1.17
     - allowed ratio:                             4.00
 ==> passed
 
@@ -797,21 +666,9 @@ Running 2 total tests.
 
 Test 1: count calls to methods in WordNet
  * outcast4.txt
-    - student   distance() calls  = 0
-    - reference distance() calls  = 6
-    - maximum allowed             = 16
-
  * outcast10.txt
-    - student   distance() calls  = 0
-    - reference distance() calls  = 45
-    - maximum allowed             = 100
-
  * outcast29.txt
-    - student   distance() calls  = 0
-    - reference distance() calls  = 406
-    - maximum allowed             = 841
-
-==> FAILED
+==> passed
 
 Test 2: timing calls to outcast() for various outcast files
 
@@ -838,12 +695,12 @@ Total time must not exceed 1.0 seconds.
   outcast20.txt   20     0.00
   outcast29.txt   29     0.00
 
-Total elapsed time: 0.00 seconds
+Total elapsed time: 0.01 seconds
 
 ==> passed
 
 
-Total: 1/2 tests passed!
+Total: 2/2 tests passed!
 
 
 ================================================================
